@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'DM Sans';
+  src: url(./fonts/DMSans-Regular.ttf) format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f4f7f8;
+  padding-bottom: 100px;
+}
+
+html {
+  font-size: 16px;
+}
+
+.dimOnHover:hover {
+  opacity: 0.6;
+}
+
+.icon-cart {
+  background-image: url('./icons/cart.svg');
+}
+
+.icon-truck {
+  background-image: url('./icons/truck.svg');
+}
+
+.icon-phone {
+  background-image: url('./icons/phone.svg');
+}
+
+.icon-heart {
+  background-image: url('./icons/heart.svg');
+}
+
+.icon-user {
+  background-image: url('./icons/user.svg');
+}
+
+.icon-alarm {
+  background-image: url('./icons/alarm.svg');
+}
+
+.icon-search {
+  background-image: url('./icons/search.svg');
+}
+
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  margin: 2px 8px;
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.link {
+  cursor: pointer;
+  padding: 0px 15px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #11142D;
+  display: inline-block;
+}
+
+.search-input {
+  height: 3.5rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  padding: 0 20px;
+  display: inline-block;
+}
+
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-3 {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+.col-9 {
+  flex: 0 0 auto;
+  width: 75%;
+}

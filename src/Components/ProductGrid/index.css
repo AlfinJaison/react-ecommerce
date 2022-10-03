@@ -1,0 +1,17 @@
+.product-grid {
+    padding: 0 5%;
+    padding-top: 4rem;
+}
+
+.product-card {
+    width: 24.5rem;
+    height: 24rem;
+    margin: 0.5rem 0 0.5rem 1rem;
+    background: white;
+    display: inline-block;
+    padding: 0.5rem;
+}
+
+.product-list{
+    text-align: center;
+}
