@@ -25,7 +25,10 @@ function SearchBar() {
 
       </div>
 
-      <input className='search-input' type="text" placeholder='Search what you need' ></input>
+      <div className='search-input'>
+        <input type="text" placeholder='Search what you need' ></input>
+        <span className='icon icon-search'></span>
+      </div>
 
       <div className='search-bar-buttons'>
         <span className='icon icon-heart dimOnHover'></span>

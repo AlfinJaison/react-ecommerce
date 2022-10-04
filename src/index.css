@@ -13,7 +13,14 @@ body {
 }
 
 html {
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.m05{
+  margin: 0.5rem;
+}
+.m1{
+  margin: 1rem;
 }
 
 .dimOnHover:hover {
@@ -48,6 +55,10 @@ html {
   background-image: url('./icons/search.svg');
 }
 
+.icon-star {
+  background-image: url('./icons/star.svg');
+}
+
 .icon {
   width: 1.25em;
   height: 1.25em;
@@ -68,12 +79,24 @@ html {
   display: inline-block;
 }
 
-.search-input {
+.search-input{
+  position: relative;
+  width: 80%;
+}
+.search-input .icon{
+  position: absolute;
+  right:0.5rem;
+  top:1rem;
+}
+
+.search-input input {
   height: 3.5rem;
+  width: 100%;
   border-radius: 4px;
   border: none;
   font-size: 1rem;
-  padding: 0 20px;
+  padding: 0 1rem;
+  box-sizing:border-box;
   display: inline-block;
 }
 
@@ -86,6 +109,21 @@ html {
 .col-3 {
   flex: 0 0 auto;
   width: 25%;
+}
+
+.col-4 {
+  flex: 0 0 auto;
+  width: 33.33%;
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.col-8 {
+  flex: 0 0 auto;
+  width: 66.66%;
 }
 
 .col-9 {

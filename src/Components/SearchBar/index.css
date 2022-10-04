@@ -16,17 +16,16 @@
 
 .search-bar .search-input{
     width: 40%;
+    display: inline-block;
 }
 
-.search-bar .icon{
-    font-size: 1.25rem;
-}
 
 .search-bar-buttons{
     margin-right: 5%;
     float: right;
     height: 93px;
     line-height: 93px;
+    font-size: 1.25rem;
 }
 
 .search-bar-buttons .icon{
