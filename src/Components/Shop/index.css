@@ -1,0 +1,38 @@
+.shop{
+    /* padding: 0 5%; */
+    padding-top: 4rem;
+}
+
+.product-grid {
+    text-align: center;
+}
+
+
+.filter-panel .search-input {
+    margin: 0.6rem auto;
+    margin-bottom: 2rem;
+}
+
+.filter-panel .search-input input {
+    border: 1px solid black;
+    background: transparent;
+}
+
+
+.filter-category {
+    margin: 0.6rem auto;
+    width: 80%;
+}
+
+.filter-category div{
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+.filter-category .icon{
+    font-size: 0.8rem;
+    float: right;
+}
+
+.filter-header{
+    font-size: 1.25rem;
+}

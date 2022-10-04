@@ -1,34 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../Models/Product';
-import { getProducts } from '../../services/product';
 import Rating from '../Rating';
+
 import './index.css'
 
-function ProductGrid() {
+type ProductGridProps = {
+    products: Product[],
+}
 
-    const defaultProduct: Product = new Product()
-    const [products, setProducts] = useState([defaultProduct])
+function ProductGrid(props: ProductGridProps) {
+
+    const { products } = props
 
     const defaultPage: number = 0
     const [page, setPage] = useState(defaultPage)
 
-    const defaultMaxPages: number = 0
-    const [maxPages, setMaxPages] = useState(defaultMaxPages)
-
     //Max item per page
-    const maxItems = 6
-
-    useEffect(() => {
-
-        getProducts().then((res: Product[]) => {
-            if (res && res.length > 0) {
-                setProducts(res)
-                setMaxPages(Math.ceil(res.length / maxItems))
-            }
-
-        })
-
-    }, [])
+    const maxItems = 4
 
     function prevPage() {
         setPage(prevState => {
@@ -36,54 +24,46 @@ function ProductGrid() {
         })
     }
 
-    function nextPage() {
+    function nextPage(maxPages: number) {
         setPage(prevState => {
-            if(maxPages === 0)
+            if (maxPages === 0)
                 return 0
             return Math.min(maxPages - 1, prevState + 1)
         })
     }
 
+    function maxPages(products: Product[]) {
+        if (products.length > 0)
+            return Math.ceil(products.length / maxItems)
+        return 1
+    }
+
+
     return (
-        <div className='product-grid '>
-            <div className="grid">
-
-                <div className='col-4 filter-panel'>
-
-                    <div className='search-input'>
-                        <input placeholder='Search Products'></input>
-                        <span className='icon icon-search'></span>
+        <>
+            {products.slice(page * maxItems, page * maxItems + maxItems).map((p, i) => {
+                const { title, image, price, rating } = p
+                let { rate } = rating
+                rate = Math.round(rate)
+                return (
+                    <div className='product-card' key={'productCard' + i}>
+                        <img src={image}></img>
+                        <div className='product-card-title'>{title}</div>
+                        <Rating rating={rate} />
+                        <div className='product-card-seller m05'>Seller</div>
+                        <div className='product-card-price'>${price}</div>
                     </div>
+                )
+            })}
+
+            <div className='pagination'>
+                <button onClick={prevPage}>{'<'}</button>
+                <div className='search-input'>
+                    <input readOnly={true} value={(page + 1) + ' / ' + (maxPages(products))}></input>
                 </div>
-
-                <div className='col-8 product-list'>
-
-                    {products.slice(page * maxItems, page * maxItems + maxItems).map(p => {
-                        const { title, image, price, rating } = p
-                        let { rate } = rating
-                        rate = Math.round(rate)
-                        return (
-                            <div className='product-card'>
-                                <img src={image}></img>
-                                <div className='product-card-title'>{title}</div>
-                                <Rating rating={rate} />
-                                <div className='product-card-seller m05'>Seller</div>
-                                <div className='product-card-price'>${price}</div>
-                            </div>
-                        )
-                    })}
-
-                    <div className='pagination'>
-                        <button onClick={prevPage}>{'<'}</button>
-                        <div className='search-input'>
-                            <input value={(page+1)+' / '+(maxPages)}></input>
-                        </div>
-                        <button onClick={nextPage}>{'>'}</button>
-                    </div>
-                </div>
-
+                <button onClick={() => nextPage(maxPages(products))}>{'>'}</button>
             </div>
-        </div>
+        </>
     );
 }
 

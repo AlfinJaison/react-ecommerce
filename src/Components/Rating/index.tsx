@@ -13,7 +13,7 @@ export default function Rating(props: RatingProps) {
         <div>
             {Array.from(Array(rating), (e, i) => {
                 return (
-                    <span className='icon icon-star'></span>
+                    <span key={'rating'+i} className='icon icon-star'></span>
                 )
             })}
         </div>

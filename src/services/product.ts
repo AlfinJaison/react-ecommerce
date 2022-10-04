@@ -10,3 +10,9 @@ export async function getProduct(id:number) {
     let data = await res.json()
     return data
 }
+
+export async function getAllCategories() {
+    let res = await fetch(`https://fakestoreapi.com/products/categories`)
+    let data = await res.json()
+    return data
+}
