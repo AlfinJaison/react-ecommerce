@@ -9,13 +9,24 @@ function Shop() {
     const defaultProducts: Product[] = []
     const [products, setProducts] = useState(defaultProducts)
 
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('all')
 
     const defaultCategories: string[] = []
     const [categories, setCategories] = useState(defaultCategories)
 
     const defaultSearchText: string = ''
     const [searchText, setSearchText] = useState(defaultSearchText)
+
+    const defaultPriceRange: string = '$100 - $1000'
+    const [priceRange, setPriceRange] = useState(defaultPriceRange)
+
+    const priceRangeLabels = [
+        'Any',
+        '$0 - $20',
+        '$20 - $100',
+        '$100 - $1000',
+    ]
+
 
     useEffect(() => {
 
@@ -27,24 +38,36 @@ function Shop() {
 
         getAllCategories().then(res => {
             if (res && res.length > 0) {
-                setCategories(res)
+                setCategories(['all', ...res])
             }
         })
 
     }, [])
 
 
-    function formatProducts(products: Product[], searchText: string, category: string) {
+    function formatProducts(products: Product[], searchText: string, category: string, priceRange: string) {
 
         products = products.filter(p => p.title.toLowerCase().includes(searchText.toLowerCase()))
 
-        if (category.length > 0)
+        let range: number[]
+        if (priceRange.includes('Any'))
+            range = [0, 99999]
+        if (priceRange.includes('$0 - $20'))
+            range = [0, 20]
+        if (priceRange.includes('$20 - $100'))
+            range = [20, 100]
+        if (priceRange.includes('$100 - $1000'))
+            range = [100, 1000]
+
+        products = products.filter(p => p.price > range[0] && p.price < range[1])
+
+        if (category.length > 0 && !category.includes('all'))
             products = products.filter(p => p.category === category)
 
         return products
     }
 
-    function capitalize(str:string){
+    function capitalize(str: string) {
         return str[0].toUpperCase() + str.slice(1)
     }
 
@@ -65,13 +88,35 @@ function Shop() {
                         <span className='icon icon-search'></span>
                     </div>
 
-                    <div className='filter-category'>
+                    <div className='filter'>
+
+                        <div className='filter-header'>
+                            Price
+                            <span className='icon icon-filter dimOnHover pointer' />
+
+                            <div style={{ position: 'relative' }}>
+                                <div className='dropdown'>
+                                    {priceRangeLabels.map(r => {
+                                        return <div onClick={() => setPriceRange(r)}>{r}</div>
+                                    })}
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div>
+                            Range
+                            <div className='filter-price-range'>{priceRange}</div>
+                        </div>
+
+
                         <div className='filter-header'>Product Categories</div>
 
                         {
                             categories.map((c, i) => {
                                 return (
-                                    <div className='dimOnHover pointer' key={'category' + i}
+                                    <div className='dimOnHover pointer category' key={'category' + i}
                                         onClick={() => setCategory(c)}>
                                         {capitalize(c)}
                                         <span className='icon icon-right-arrow'></span>
@@ -85,7 +130,7 @@ function Shop() {
 
                 <div className='col-8 product-grid'>
 
-                    <ProductGrid products={formatProducts(products, searchText, category)} />
+                    <ProductGrid products={formatProducts(products, searchText, category, priceRange)} />
 
                 </div>
 

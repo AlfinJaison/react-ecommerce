@@ -19,20 +19,60 @@
 }
 
 
-.filter-category {
+.filter {
     margin: 0.6rem auto;
     width: 80%;
 }
 
-.filter-category div{
+.filter .category{
     font-weight: 600;
     margin-bottom: 2rem;
 }
-.filter-category .icon{
+.filter .icon{
     font-size: 0.8rem;
     float: right;
 }
 
 .filter-header{
     font-size: 1.25rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.filter-header .icon{
+    font-size: 1rem;
+}
+
+.filter-price-range{
+    float: right;
+}
+
+.dropdown{
+    position: absolute;
+    width:2rem;
+    height:2rem;
+    z-index: 100;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dropdown div{
+    display: none;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 0.8rem;
+}
+
+.dropdown:hover{
+    height:16rem;
+    width:8rem;
+    height:12rem;
+    background-color: white;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover div{
+    display: block;
 }
