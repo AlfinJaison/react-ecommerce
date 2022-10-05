@@ -17,7 +17,7 @@ function Shop() {
     const defaultSearchText: string = ''
     const [searchText, setSearchText] = useState(defaultSearchText)
 
-    const defaultPriceRange: string = '$100 - $1000'
+    const defaultPriceRange: string = 'Any'
     const [priceRange, setPriceRange] = useState(defaultPriceRange)
 
     const priceRangeLabels = [
@@ -94,7 +94,7 @@ function Shop() {
                             Price
                             <span className='icon icon-filter dimOnHover pointer' />
 
-                            <div style={{ position: 'relative' }}>
+                            <div style={{ position: 'relative',float:'right' }}>
                                 <div className='dropdown'>
                                     {priceRangeLabels.map(r => {
                                         return <div onClick={() => setPriceRange(r)}>{r}</div>

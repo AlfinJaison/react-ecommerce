@@ -1,5 +1,6 @@
 
 .product-card {
+    position: relative;
     width: 24.5rem;
     height: 23rem;
     margin: 0.6rem;
@@ -38,6 +39,22 @@
     font-weight: 600;
     color: #F3692E;
 }
+
+.product-wish{
+    position: absolute;
+    width: 1.6rem;
+    height: 1.4rem;
+    border-radius: 4px;
+    background: #F3692E44;
+    top:0.5rem;
+    right:0.5rem;
+}
+
+.product-wish .icon{
+    margin: 4px;
+    font-size: 0.65rem;
+}
+
 
 /* .pagination{
     text-align: right;

@@ -48,6 +48,11 @@ function ProductGrid(props: ProductGridProps) {
                 return (
                     <div className='product-card' key={'productCard' + i}>
                         <img src={image}></img>
+
+                        <div className='product-wish dimOnHover pointer'>
+                            <span className='icon icon-heart-primary'></span>
+                        </div>
+
                         <div className='product-card-title'>{title}</div>
                         <Rating rating={rate} />
                         <div className='product-card-seller m05'>Seller</div>

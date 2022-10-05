@@ -1,3 +1,14 @@
+# React E-Commerce App
+
+![Screenshot of the App](/README_Assets/screenshot.png "Screenshot of the App")
+
+## Features:
+
+Search\
+Pagination\
+Price Range Filter\
+Category Filter
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

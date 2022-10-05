@@ -47,6 +47,10 @@ html {
   background-image: url('./icons/heart.svg');
 }
 
+.icon-heart-primary {
+  background-image: url('./icons/heart-primary.svg');
+}
+
 .icon-user {
   background-image: url('./icons/user.svg');
 }
