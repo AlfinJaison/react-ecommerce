@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { GlobalState } from '../../GlobalState';
 import Product from '../../Models/Product';
 import Rating from '../Rating';
 
@@ -9,6 +10,9 @@ type ProductGridProps = {
 }
 
 function ProductGrid(props: ProductGridProps) {
+
+    const { wishList, setWishList } = useContext(GlobalState)
+
 
     const { products } = props
 
@@ -38,19 +42,31 @@ function ProductGrid(props: ProductGridProps) {
         return 1
     }
 
+    function toggleWishList(id: number) {
+        setWishList((prevState) => {
+            if (prevState.includes(id))
+                return prevState.filter(i => i !== id)
+            return [...prevState, id]
+        })
+    }
 
     return (
         <>
             {products.slice(page * maxItems, page * maxItems + maxItems).map((p, i) => {
-                const { title, image, price, rating } = p
+                const { id, title, image, price, rating } = p
                 let { rate } = rating
                 rate = Math.round(rate)
                 return (
                     <div className='product-card' key={'productCard' + i}>
                         <img src={image}></img>
 
-                        <div className='product-wish dimOnHover pointer'>
-                            <span className='icon icon-heart-primary'></span>
+                        <div className='product-wish dimOnHover pointer' onClick={() => toggleWishList(id)}>
+                            {
+                                wishList.includes(id)
+                                    ? <span className='icon icon-heart-fill-primary'></span>
+                                    : <span className='icon icon-heart-primary'></span>
+                            }
+
                         </div>
 
                         <div className='product-card-title'>{title}</div>

@@ -51,6 +51,10 @@ html {
   background-image: url('./icons/heart-primary.svg');
 }
 
+.icon-heart-fill-primary{
+  background-image: url('./icons/heart-fill-primary.svg');
+}
+
 .icon-user {
   background-image: url('./icons/user.svg');
 }
