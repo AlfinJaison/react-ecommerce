@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalState } from '../../GlobalState';
 import './index.css'
 
 function SearchBar() {
+
+  const { wishList } = useContext(GlobalState)
+
   return (
     <div className="search-bar">
 
@@ -31,10 +35,13 @@ function SearchBar() {
       </div>
 
       <div className='search-bar-buttons'>
-        <span className='icon icon-heart dimOnHover'></span>
-        <span className='icon icon-cart dimOnHover'></span>
-        <span className='icon icon-user dimOnHover'></span>
-        <span className='icon icon-alarm dimOnHover'></span>
+        <div className='icon-badge-container'>
+          <span className='icon icon-heart dimOnHover pointer'></span>
+          <div className='icon-badge'>{wishList.length}</div>
+        </div>
+        <span className='icon icon-cart dimOnHover pointer'></span>
+        <span className='icon icon-user dimOnHover pointer'></span>
+        <span className='icon icon-alarm dimOnHover pointer'></span>
       </div>
 
     </div>
